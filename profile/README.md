@@ -9,6 +9,10 @@ real clients and render those events into whatever wire format the client
 speaks. One world, simultaneously playable from Java 1.21.5–1.21.8, Java 26.2,
 and Bedrock — no client mods, no proxies bolted on after the fact.
 
+**Get playing in one command:** [tachyne/tachyne](https://github.com/tachyne/tachyne)
+has a Docker Compose stack and Kubernetes manifests — classic infinite
+survival by default, real-Cape-Town earth mode as a variant.
+
 What runs today:
 
 - 🌍 **A full survival game** — terrain, caves, biomes, combat, the full mob
