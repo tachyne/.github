@@ -53,11 +53,38 @@ bans, roles, IP rules) enforced at the edge.
   container, built by CI on every push; vanilla-style flow control
   (chunk-batch pacing) keeps joins fast and flight smooth.
 
+## How it compares
+
+Conventional servers (vanilla, Paper, Fabric) and tachyne sit at different
+points in the design space:
+
+| | Conventional Java server | tachyne |
+|---|---|---|
+| **Process model** | One monolithic JVM process | Distributed pods: engine, per-version gateways, ingress, authz |
+| **Multi-version** | Proxy/plugin layers bolted on (ViaVersion etc.) | Native: a versionless engine + per-version render gateways |
+| **Concurrency** | One main game thread; plugins fight for it | Go goroutines per connection; simulation isolated per world pod |
+| **Scaling** | Vertical only — a bigger machine | Horizontal: front tier replicates freely; world sharding splits one map across pods |
+| **Footprint** | JVM heap, GC tuning, warmup | Small static Go binaries, containers measured in tens of MB |
+| **Gameplay** | Complete vanilla | Vanilla parity **in progress** — see the [feature matrix](https://github.com/tachyne/tachyne-world#what-to-expect-vanilla-parity-at-a-glance) |
+| **Ecosystem** | Massive plugin ecosystem | None yet — extension means Go code, PRs welcome |
+
+Unlike headless Go/Java frameworks (Minestom-style), tachyne is **not** a
+build-your-own-gameplay kit: the engine ships real survival Minecraft —
+terrain, mobs, combat, villages, the dragon fight — and is closing the gap to
+full parity feature by feature. Pick a conventional server if you want the
+complete game and its plugin ecosystem today; pick tachyne if you want a
+multi-version, horizontally-scalable, cloud-native world and can live with
+the parity matrix as it stands.
+
+Numbers we'll stand behind: ~150 concurrent sessions measured on a single
+node so far. The architecture is built to go well past that (sharding,
+stateless front tier), but we publish what we've measured, not what we hope.
+
 ## Where it's headed
 
 The goal is **full vanilla feature parity**, worked through systematically —
-progression systems first (advancements ✅, statistics and the recipe book
-next), then interactive blocks and UI (scoreboards, maps, signs, beacons),
+progression systems ✅ (advancements, statistics, the recipe book, scoreboards
+& teams all shipped), then interactive blocks and UI (signs, maps, beacons),
 world simulation depth (fluids, fire spread, redstone tier 2, data-driven
 loot), structures (fortresses, end cities, monuments, raids), and item/combat
 depth (fishing, the full enchantment set, crossbows/tridents).
