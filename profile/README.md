@@ -13,18 +13,61 @@ and Bedrock — no client mods, no proxies bolted on after the fact.
 has a Docker Compose stack and Kubernetes manifests — classic infinite
 survival by default, real-Cape-Town earth mode as a variant.
 
-What runs today:
+## How it fits together
 
-- 🌍 **A full survival game** — terrain, caves, biomes, combat, the full mob
-  roster, redstone, Nether + End, villages, enchanting, brewing, weather.
+```
+   Java 1.21.5–.8      Java 26.2       Bedrock (latest)
+        │                  │                 │
+   gw-java-770        gw-java-776       gw-bedrock          ← render per version
+        └───────────┬──────┴─────────────────┘
+                    │  typed domain events (attach protocol)
+              tachyne-world                                  ← ONE versionless engine
+```
+
+A new Minecraft version is a new translation step in a gateway — the engine
+never changes. The ingress routes each client to the right gateway by
+protocol version; the access service holds one policy store (whitelist,
+bans, roles, IP rules) enforced at the edge.
+
+## What runs today
+
+- 🌍 **A full survival game** — original terrain/cave/biome generation, real
+  lighting, mining/crafting/smelting, 1.9-style combat, the complete vanilla
+  mob roster with breeding/taming/riding, enchanting/brewing/anvils,
+  villages with scheduled villagers and trading, weather, redstone tier 1,
+  the Nether, and the End with the full dragon fight.
+- 🏆 **The vanilla advancement system** — the complete advancement tree with
+  vanilla reveal semantics (the tree unfolds as you progress; hidden
+  advancements appear only once earned), toasts, chat announcements, and XP
+  rewards, on every supported client version.
 - 🧩 **Live world sharding** — one world split across pods with silent,
   no-loading-screen handover: cross-border visibility, mobs that chase you
   across the seam, momentum preserved.
 - 🗺️ **Earth mode** — real-world terrain from open elevation data. The
-  flagship world is **greater Cape Town at 1:1 scale**: spawn in the city
-  bowl and look up at Table Mountain.
+  flagship world is **greater Cape Town at true 1:1 scale**, with a raised
+  world ceiling so Table Mountain stands its full height.
+- 🔀 **Multi-version for real** — one canonical composition plus a chained,
+  data-driven translation layer; a 1.21.5 client and a 26.2 client stand in
+  the same world and see the same things, each in their own wire dialect.
 - ⚙️ **Kubernetes-native** — every component is a small Go binary in a
-  container, built by CI on every push.
+  container, built by CI on every push; vanilla-style flow control
+  (chunk-batch pacing) keeps joins fast and flight smooth.
+
+## Where it's headed
+
+The goal is **full vanilla feature parity**, worked through systematically —
+progression systems first (advancements ✅, statistics and the recipe book
+next), then interactive blocks and UI (scoreboards, maps, signs, beacons),
+world simulation depth (fluids, fire spread, redstone tier 2, data-driven
+loot), structures (fortresses, end cities, monuments, raids), and item/combat
+depth (fishing, the full enchantment set, crossbows/tridents).
+
+Honest expectations before you commit an evening:
+**[the feature matrix](https://github.com/tachyne/tachyne-world#what-to-expect-vanilla-parity-at-a-glance)**
+in tachyne-world's README lists what's implemented, what's partial, and
+what's missing.
+
+## The repos
 
 | Repo | Role |
 |---|---|
@@ -33,6 +76,7 @@ What runs today:
 | [tachyne-gw-java-770](https://github.com/tachyne/tachyne-gw-java-770) · [-776](https://github.com/tachyne/tachyne-gw-java-776) · [-bedrock](https://github.com/tachyne/tachyne-gw-bedrock) | per-version client gateways |
 | [tachyne-ingress](https://github.com/tachyne/tachyne-ingress) | the single public entrypoint: version routing + UDP forwarding |
 | [tachyne-access](https://github.com/tachyne/tachyne-access) | authorization: whitelist, bans, roles, IP ACL |
+| [tachyne](https://github.com/tachyne/tachyne) | quickstart: Docker Compose + Kubernetes examples |
 
 Contributions welcome — each repo has a `CONTRIBUTING.md`. Licensed
 Apache-2.0. Built by a human maintainer working with an AI coding agent;
