@@ -66,7 +66,7 @@ points in the design space:
 | **Scaling** | Vertical only — a bigger machine | Horizontal: front tier replicates freely; world sharding splits one map across pods |
 | **Footprint** | JVM heap, GC tuning, warmup | Small static Go binaries, containers measured in tens of MB |
 | **Gameplay** | Complete vanilla | Vanilla parity **in progress** — see the [feature matrix](https://github.com/tachyne/tachyne-world#what-to-expect-vanilla-parity-at-a-glance) |
-| **Ecosystem** | Massive plugin ecosystem | Young: a Bukkit-shaped [Go plugin API](https://github.com/tachyne/tachyne-world/blob/main/docs/PLUGINS.md) (events, commands, scheduler, storage — plugins compile into the server) plus a language-agnostic NATS event bus |
+| **Ecosystem** | Massive plugin ecosystem | Young but complete plumbing: a Bukkit-shaped [Go plugin API](https://github.com/tachyne/tachyne-world/blob/main/docs/PLUGINS.md), a language-agnostic event bus with hot-installable daemon plugins, a [plugin registry](https://github.com/tachyne/registry) for discovery, and progressive fleet-wide plugin rollouts |
 
 Unlike headless Go/Java frameworks (Minestom-style), tachyne is **not** a
 build-your-own-gameplay kit: the engine ships real survival Minecraft —
