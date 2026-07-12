@@ -104,6 +104,7 @@ what's missing.
 | [tachyne-ingress](https://github.com/tachyne/tachyne-ingress) | the single public entrypoint: version routing + UDP forwarding |
 | [tachyne-access](https://github.com/tachyne/tachyne-access) | authorization: whitelist, bans, roles, IP ACL |
 | [tachyne-registry](https://github.com/tachyne/tachyne-registry) | plugin registry: discovery over git-hosted plugins |
+| [tachyne-plugin-manager](https://github.com/tachyne/tachyne-plugin-manager) | pulls, builds, boots and supervises daemon plugins; the fleet control plane |
 | [tachyne](https://github.com/tachyne/tachyne) | quickstart: Docker Compose + Kubernetes examples |
 
 Contributions welcome — each repo has a `CONTRIBUTING.md`. Licensed
