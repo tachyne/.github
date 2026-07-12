@@ -66,7 +66,7 @@ points in the design space:
 | **Scaling** | Vertical only — a bigger machine | Horizontal: front tier replicates freely; world sharding splits one map across pods |
 | **Footprint** | JVM heap, GC tuning, warmup | Small static Go binaries, containers measured in tens of MB |
 | **Gameplay** | Complete vanilla | Vanilla parity **in progress** — see the [feature matrix](https://github.com/tachyne/tachyne-world#what-to-expect-vanilla-parity-at-a-glance) |
-| **Ecosystem** | Massive plugin ecosystem | Young but complete plumbing: a Bukkit-shaped [Go plugin API](https://github.com/tachyne/tachyne-world/blob/main/docs/PLUGINS.md), a language-agnostic event bus with hot-installable daemon plugins, a [plugin registry](https://github.com/tachyne/registry) for discovery, and progressive fleet-wide plugin rollouts |
+| **Ecosystem** | Massive plugin ecosystem | Young but complete plumbing: a Bukkit-shaped [Go plugin API](https://github.com/tachyne/tachyne-world/blob/main/docs/PLUGINS.md), a language-agnostic event bus with hot-installable daemon plugins, a [plugin registry](https://github.com/tachyne/tachyne-registry) for discovery, and progressive fleet-wide plugin rollouts |
 
 Unlike headless Go/Java frameworks (Minestom-style), tachyne is **not** a
 build-your-own-gameplay kit: the engine ships real survival Minecraft —
@@ -103,7 +103,7 @@ what's missing.
 | [tachyne-gw-java-770](https://github.com/tachyne/tachyne-gw-java-770) · [-776](https://github.com/tachyne/tachyne-gw-java-776) · [-bedrock](https://github.com/tachyne/tachyne-gw-bedrock) | per-version client gateways |
 | [tachyne-ingress](https://github.com/tachyne/tachyne-ingress) | the single public entrypoint: version routing + UDP forwarding |
 | [tachyne-access](https://github.com/tachyne/tachyne-access) | authorization: whitelist, bans, roles, IP ACL |
-| [registry](https://github.com/tachyne/registry) | plugin registry: discovery over git-hosted plugins |
+| [tachyne-registry](https://github.com/tachyne/tachyne-registry) | plugin registry: discovery over git-hosted plugins |
 | [tachyne](https://github.com/tachyne/tachyne) | quickstart: Docker Compose + Kubernetes examples |
 
 Contributions welcome — each repo has a `CONTRIBUTING.md`. Licensed
