@@ -66,13 +66,13 @@ points in the design space:
 | **Scaling** | Vertical only — a bigger machine | Horizontal: front tier replicates freely; world sharding splits one map across pods |
 | **Footprint** | JVM heap, GC tuning, warmup | Small static Go binaries, containers measured in tens of MB |
 | **Gameplay** | Complete vanilla | Vanilla parity **in progress** — see the [feature matrix](https://github.com/tachyne/tachyne-world#what-to-expect-vanilla-parity-at-a-glance) |
-| **Ecosystem** | Massive plugin ecosystem | None yet — extension means Go code, PRs welcome |
+| **Ecosystem** | Massive plugin ecosystem | Young: a Bukkit-shaped [Go plugin API](https://github.com/tachyne/tachyne-world/blob/main/docs/PLUGINS.md) (events, commands, scheduler, storage — plugins compile into the server) plus a language-agnostic NATS event bus |
 
 Unlike headless Go/Java frameworks (Minestom-style), tachyne is **not** a
 build-your-own-gameplay kit: the engine ships real survival Minecraft —
 terrain, mobs, combat, villages, the dragon fight — and is closing the gap to
 full parity feature by feature. Pick a conventional server if you want the
-complete game and its plugin ecosystem today; pick tachyne if you want a
+complete game and its mature plugin ecosystem today; pick tachyne if you want a
 multi-version, horizontally-scalable, cloud-native world and can live with
 the parity matrix as it stands.
 
