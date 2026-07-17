@@ -85,9 +85,10 @@ stateless front tier), but we publish what we've measured, not what we hope.
 The goal is **full vanilla feature parity**, worked through systematically —
 progression systems ✅ (advancements, statistics, the recipe book, scoreboards
 & teams all shipped), then interactive blocks and UI (signs, maps, beacons),
-world simulation depth (fluids, fire spread, redstone tier 2, data-driven
-loot), structures (fortresses, end cities, monuments, raids), and item/combat
-depth (fishing, the full enchantment set, crossbows/tridents).
+world simulation depth (fluids, fire spread, data-driven loot ✅; redstone
+tier 2 next), item/combat depth ✅ (crossbows, tridents, the mace, fishing —
+the full enchantment set is the main gap left), and structures (fortresses,
+end cities, monuments, raids).
 
 Honest expectations before you commit an evening:
 **[the feature matrix](https://github.com/tachyne/tachyne-world#what-to-expect-vanilla-parity-at-a-glance)**
