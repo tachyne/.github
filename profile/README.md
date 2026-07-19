@@ -3,11 +3,13 @@
 **A Minecraft-compatible server, written from scratch in pure Go — with a
 versionless core.**
 
-The engine speaks no Minecraft wire protocol at all. It simulates the world
-and emits typed **domain events**; per-version **gateway** processes terminate
+The engine speaks no Minecraft wire protocol at all. The game itself becomes a
+**versionless database of simulation events**, and every version-specific
+concern is pushed to the **edge**: per-version **gateway** processes terminate
 real clients and render those events into whatever wire format the client
-speaks. One world, simultaneously playable from Java 1.21.5–1.21.8, Java 26.2,
-and Bedrock — no client mods, no proxies bolted on after the fact.
+speaks. Cross-version support isn't a proxy bolted onto a Java server after the
+fact — it's the shape of the system. One world, simultaneously playable from
+Java 1.21.5–1.21.8, Java 26.2, and Bedrock, with no client mods.
 
 **Get playing in one command:** [tachyne/tachyne](https://github.com/tachyne/tachyne)
 has a Docker Compose stack and Kubernetes manifests — classic infinite
@@ -40,9 +42,11 @@ bans, roles, IP rules) enforced at the edge.
   vanilla reveal semantics (the tree unfolds as you progress; hidden
   advancements appear only once earned), toasts, chat announcements, and XP
   rewards, on every supported client version.
-- 🧩 **Live world sharding** — one world split across pods with silent,
-  no-loading-screen handover: cross-border visibility, mobs that chase you
-  across the seam, momentum preserved.
+- 🧩 **World sharding — the hard part, prototyped** — the silent cross-pod
+  handover works: no loading screen, cross-border visibility, mobs that chase
+  you across the seam, momentum preserved. It runs today as a hard-border MVP;
+  the public world runs **single-pod**, with seamless multi-pod sharding the
+  active roadmap rather than a shipped default.
 - 🗺️ **Earth mode** — real-world terrain from open elevation data. The
   flagship world is **greater Cape Town at true 1:1 scale**, with a raised
   world ceiling so Table Mountain stands its full height.
@@ -63,7 +67,7 @@ points in the design space:
 | **Process model** | One monolithic JVM process | Distributed pods: engine, per-version gateways, ingress, authz |
 | **Multi-version** | Proxy/plugin layers bolted on (ViaVersion etc.) | Native: a versionless engine + per-version render gateways |
 | **Concurrency** | One main game thread; plugins fight for it | Go goroutines per connection; simulation isolated per world pod |
-| **Scaling** | Vertical only — a bigger machine | Horizontal: front tier replicates freely; world sharding splits one map across pods |
+| **Scaling** | Vertical only — a bigger machine | Horizontal: front tier replicates freely today; world-sharding to split one map across pods is prototyped (single-pod in production for now) |
 | **Footprint** | JVM heap, GC tuning, warmup | Small static Go binaries, containers measured in tens of MB |
 | **Gameplay** | Complete vanilla | Vanilla parity **in progress** — see the [feature matrix](https://github.com/tachyne/tachyne-world#what-to-expect-vanilla-parity-at-a-glance) |
 | **Ecosystem** | Massive plugin ecosystem | Young but complete plumbing: a Bukkit-shaped [Go plugin API](https://github.com/tachyne/tachyne-world/blob/main/docs/PLUGINS.md), a language-agnostic event bus with hot-installable daemon plugins, a [plugin registry](https://github.com/tachyne/tachyne-registry) for discovery, and progressive fleet-wide plugin rollouts |
@@ -73,8 +77,8 @@ build-your-own-gameplay kit: the engine ships real survival Minecraft —
 terrain, mobs, combat, villages, the dragon fight — and is closing the gap to
 full parity feature by feature. Pick a conventional server if you want the
 complete game and its mature plugin ecosystem today; pick tachyne if you want a
-multi-version, horizontally-scalable, cloud-native world and can live with
-the parity matrix as it stands.
+multi-version, cloud-native world built to scale horizontally, and can live
+with the parity matrix as it stands.
 
 Numbers we'll stand behind: ~150 concurrent sessions measured on a single
 node so far. The architecture is built to go well past that (sharding,
@@ -82,13 +86,18 @@ stateless front tier), but we publish what we've measured, not what we hope.
 
 ## Where it's headed
 
-The goal is **full vanilla feature parity**, worked through systematically —
-progression systems ✅ (advancements, statistics, the recipe book, scoreboards
-& teams all shipped), then interactive blocks and UI (signs, maps, beacons),
-world simulation depth (fluids, fire spread, data-driven loot ✅; redstone
-tier 2 next), item/combat depth ✅ (crossbows, tridents, the mace, fishing —
-the full enchantment set is the main gap left), and structures (fortresses,
-end cities, monuments, raids).
+The goal is **full vanilla feature parity**, worked through systematically.
+Shipped so far: progression systems ✅ (advancements, statistics, the recipe
+book, scoreboards & teams), interactive blocks & UI ✅ (signs, maps, beacons),
+world-simulation depth ✅ (fluids, fire spread, data-driven loot, redstone
+tiers 1–2, the sculk family & the Warden), item/combat depth ✅ (crossbows,
+tridents, the mace, fishing), and a growing set of generated structures ✅ —
+villages, pillager outposts and ancient cities built from **real vanilla NBT
+templates via jigsaw assembly**, plus shipwrecks, buried treasure, ocean
+monuments, trial chambers and woodland mansions. The largest gaps left are the
+full enchantment set and the long tail of block/mob behaviours — and, on the
+infrastructure side, **seamless multi-pod world sharding** (the prototype
+exists; making it the production default is the flagship goal).
 
 Honest expectations before you commit an evening:
 **[the feature matrix](https://github.com/tachyne/tachyne-world#what-to-expect-vanilla-parity-at-a-glance)**
