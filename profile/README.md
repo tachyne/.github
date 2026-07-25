@@ -113,6 +113,7 @@ what's missing.
 | [tachyne-gw-java-770](https://github.com/tachyne/tachyne-gw-java-770) · [-776](https://github.com/tachyne/tachyne-gw-java-776) · [-bedrock](https://github.com/tachyne/tachyne-gw-bedrock) | per-version client gateways |
 | [tachyne-ingress](https://github.com/tachyne/tachyne-ingress) | the single public entrypoint: version routing + UDP forwarding |
 | [tachyne-access](https://github.com/tachyne/tachyne-access) | authorization: whitelist, bans, roles, IP ACL |
+| [tachyne-map](https://github.com/tachyne/tachyne-map) | 3D web map: meshes the world in Go and streams it to the browser |
 | [tachyne-registry](https://github.com/tachyne/tachyne-registry) | plugin registry: discovery over git-hosted plugins |
 | [tachyne-plugin-manager](https://github.com/tachyne/tachyne-plugin-manager) | pulls, builds, boots and supervises daemon plugins; the fleet control plane |
 | [tachyne](https://github.com/tachyne/tachyne) | quickstart: Docker Compose + Kubernetes examples |
