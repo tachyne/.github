@@ -37,7 +37,9 @@ bans, roles, IP rules) enforced at the edge.
   lighting, mining/crafting/smelting, 1.9-style combat, the complete vanilla
   mob roster with breeding/taming/riding, enchanting/brewing/anvils,
   villages with scheduled villagers and trading, weather, redstone tier 1,
-  the Nether, and the End with the full dragon fight.
+  player-versus-player, a world border, the Nether, and the End with the
+  dragon fight on its real phase machine — it circles, strafes you with a
+  fireball, and lands on the portal to breathe over the podium.
 - 🏆 **The vanilla advancement system** — the complete advancement tree with
   vanilla reveal semantics (the tree unfolds as you progress; hidden
   advancements appear only once earned), toasts, chat announcements, and XP
