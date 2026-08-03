@@ -9,7 +9,9 @@ concern is pushed to the **edge**: per-version **gateway** processes terminate
 real clients and render those events into whatever wire format the client
 speaks. Cross-version support isn't a proxy bolted onto a Java server after the
 fact — it's the shape of the system. One world, simultaneously playable from
-Java 1.21.5–1.21.8, Java 26.2, and Bedrock, with no client mods.
+Java 1.21.5–1.21.8, Java 26.2, and Bedrock, with no client mods — the Bedrock
+gateway is the younger one, rendering terrain, entities, movement and chat
+while inventory screens and the survival HUD are still on the way.
 
 **Get playing in one command:** [tachyne/tachyne](https://github.com/tachyne/tachyne)
 has a Docker Compose stack and Kubernetes manifests — classic infinite
@@ -35,12 +37,12 @@ bans, roles, IP rules) enforced at the edge.
 
 - 🌍 **A full survival game** — original terrain/cave/biome generation, real
   lighting, mining/crafting/smelting, 1.9-style combat, the complete vanilla
-  mob roster with breeding/taming/riding, enchanting/brewing/anvils,
-  villages with scheduled villagers and trading, weather, redstone tier 1,
-  player-versus-player, a world border, the Nether, and the End with the
+  mob roster with breeding, riding, and taming for the four species vanilla tames, enchanting/brewing/anvils,
+  villages with scheduled villagers and trading, raids, weather, redstone
+  tiers 1–2, player-versus-player, a world border, the Nether, and the End with the
   dragon fight on its real phase machine — it circles, strafes you with a
-  fireball, and lands on the portal to breathe over the podium.
-- 🏆 **The vanilla advancement system** — the complete advancement tree with
+  fireball, and lands at the island's heart to breathe over you.
+- 🏆 **The vanilla advancement system** — the vanilla advancement tree (with the caveat that many criteria are not yet observable — the world README counts them) with
   vanilla reveal semantics (the tree unfolds as you progress; hidden
   advancements appear only once earned), toasts, chat announcements, and XP
   rewards, on every supported client version.
@@ -82,8 +84,9 @@ complete game and its mature plugin ecosystem today; pick tachyne if you want a
 multi-version, cloud-native world built to scale horizontally, and can live
 with the parity matrix as it stands.
 
-Numbers we'll stand behind: ~150 concurrent sessions measured on a single
-node so far. The architecture is built to go well past that (sharding,
+On numbers: the ~150 concurrent sessions this project has quoted were measured
+on the pre-split engine, before the gateway architecture existed, and the pod
+stack has not been re-measured — so we claim no figure for it today. The architecture is built to go well past that (sharding,
 stateless front tier), but we publish what we've measured, not what we hope.
 
 ## Where it's headed
@@ -97,7 +100,9 @@ tridents, the mace, fishing), and a growing set of generated structures ✅ —
 villages, pillager outposts and ancient cities built from **real vanilla NBT
 templates via jigsaw assembly**, plus shipwrecks, buried treasure, ocean
 monuments, trial chambers and woodland mansions. The largest gaps left are the
-full enchantment set and the long tail of block/mob behaviours — and, on the
+enchanting table's roll depth (the set itself is all but complete — 41 of 42,
+only trident Channeling missing — but an item carries at most two, rolled one
+per offer) and the long tail of block/mob behaviours — and, on the
 infrastructure side, **seamless multi-pod world sharding** (the prototype
 exists; making it the production default is the flagship goal).
 
