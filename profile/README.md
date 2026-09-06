@@ -96,10 +96,11 @@ Shipped so far: progression systems ✅ (advancements, statistics, the recipe
 book, scoreboards & teams), interactive blocks & UI ✅ (signs, maps, beacons),
 world-simulation depth ✅ (fluids, fire spread, data-driven loot, redstone
 tiers 1–2, the sculk family & the Warden), item/combat depth ✅ (crossbows,
-tridents, the mace, fishing), and a growing set of generated structures ✅ —
-villages, pillager outposts and ancient cities built from **real vanilla NBT
-templates via jigsaw assembly**, plus shipwrecks, buried treasure, ocean
-monuments, trial chambers and woodland mansions. The largest gaps left are the
+tridents, the mace, fishing), and the generated structures ✅ — villages,
+pillager outposts, ancient cities, bastion remnants and End cities built from
+**real vanilla NBT templates via jigsaw assembly**, Nether fortresses and
+woodland mansions from ports of vanilla's piece generators, plus shipwrecks,
+buried treasure, ocean monuments and trial chambers. The largest gaps left are the
 enchanting table's roll depth (the set itself is all but complete — 41 of 42,
 only trident Channeling missing — but an item carries at most two, rolled one
 per offer) and the long tail of block/mob behaviours — and, on the
