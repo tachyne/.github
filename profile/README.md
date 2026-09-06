@@ -10,8 +10,9 @@ real clients and render those events into whatever wire format the client
 speaks. Cross-version support isn't a proxy bolted onto a Java server after the
 fact — it's the shape of the system. One world, simultaneously playable from
 Java 1.21.5–1.21.8, Java 26.2, and Bedrock, with no client mods — the Bedrock
-gateway is the younger one, rendering terrain, entities, movement and chat
-while inventory screens and the survival HUD are still on the way.
+gateway renders terrain, entities, movement, chat, the survival HUD, every
+container and workstation screen, crafting, trading and portal travel, with
+a short list of Bedrock-specific limits in its README.
 
 **Get playing in one command:** [tachyne/tachyne](https://github.com/tachyne/tachyne)
 has a Docker Compose stack and Kubernetes manifests — classic infinite
