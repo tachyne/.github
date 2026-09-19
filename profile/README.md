@@ -9,7 +9,7 @@ concern is pushed to the **edge**: per-version **gateway** processes terminate
 real clients and render those events into whatever wire format the client
 speaks. Cross-version support isn't a proxy bolted onto a Java server after the
 fact — it's the shape of the system. One world, simultaneously playable from
-Java 1.21.5–1.21.8, Java 26.2, and Bedrock, with no client mods — the Bedrock
+Java 1.21.5–1.21.8, Java 26.2–26.3, and Bedrock, with no client mods — the Bedrock
 gateway renders terrain, entities, movement, chat, the survival HUD, every
 container and workstation screen, crafting, trading and portal travel, with
 a short list of Bedrock-specific limits in its README.
@@ -21,7 +21,7 @@ survival by default, real-Cape-Town earth mode as a variant.
 ## How it fits together
 
 ```
-   Java 1.21.5–.8      Java 26.2       Bedrock (latest)
+   Java 1.21.5–.8      Java 26.2–26.3  Bedrock (latest)
         │                  │                 │
    gw-java-770        gw-java-776       gw-bedrock          ← render per version
         └───────────┬──────┴─────────────────┘
