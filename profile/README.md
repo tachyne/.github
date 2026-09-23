@@ -9,7 +9,7 @@ concern is pushed to the **edge**: per-version **gateway** processes terminate
 real clients and render those events into whatever wire format the client
 speaks. Cross-version support isn't a proxy bolted onto a Java server after the
 fact — it's the shape of the system. One world, simultaneously playable from
-Java 1.21.5–1.21.8, Java 26.2–26.3, and Bedrock, with no client mods — the Bedrock
+Java 26.2–26.3 and Bedrock, with no client mods — the Bedrock
 gateway renders terrain, entities, movement, chat, the survival HUD, every
 container and workstation screen, crafting, trading and portal travel, with
 a short list of Bedrock-specific limits in its README.
@@ -21,10 +21,10 @@ survival by default, real-Cape-Town earth mode as a variant.
 ## How it fits together
 
 ```
-   Java 1.21.5–.8      Java 26.2–26.3  Bedrock (latest)
-        │                  │                 │
-   gw-java-770        gw-java-776       gw-bedrock          ← render per version
-        └───────────┬──────┴─────────────────┘
+        Java 26.2–26.3         Bedrock (latest)
+               │                      │
+          gw-java-776             gw-bedrock          ← render per version
+               └──────────┬───────────┘
                     │  typed domain events (attach protocol)
               tachyne-world                                  ← ONE versionless engine
 ```
@@ -56,7 +56,7 @@ bans, roles, IP rules) enforced at the edge.
   flagship world is **greater Cape Town at true 1:1 scale**, with a raised
   world ceiling so Table Mountain stands its full height.
 - 🔀 **Multi-version for real** — one canonical composition plus a chained,
-  data-driven translation layer; a 1.21.5 client and a 26.2 client stand in
+  data-driven translation layer; a 26.2 client and a 26.3 client stand in
   the same world and see the same things, each in their own wire dialect.
 - ⚙️ **Kubernetes-native** — every component is a small Go binary in a
   container, built by CI on every push; vanilla-style flow control
@@ -119,7 +119,7 @@ what's missing.
 |---|---|
 | [tachyne-world](https://github.com/tachyne/tachyne-world) | the engine: simulation, worldgen, sharding, earth mode |
 | [tachyne-common](https://github.com/tachyne/tachyne-common) | shared library: attach protocol, renderer, translation chain, gateway pipeline |
-| [tachyne-gw-java-770](https://github.com/tachyne/tachyne-gw-java-770) · [-776](https://github.com/tachyne/tachyne-gw-java-776) · [-bedrock](https://github.com/tachyne/tachyne-gw-bedrock) | per-version client gateways |
+| [tachyne-gw-java-776](https://github.com/tachyne/tachyne-gw-java-776) · [-bedrock](https://github.com/tachyne/tachyne-gw-bedrock) | per-version client gateways ([-770](https://github.com/tachyne/tachyne-gw-java-770), for 1.21.5–1.21.8, is retired) |
 | [tachyne-ingress](https://github.com/tachyne/tachyne-ingress) | the single public entrypoint: version routing + UDP forwarding |
 | [tachyne-access](https://github.com/tachyne/tachyne-access) | authorization: whitelist, bans, roles, IP ACL |
 | [tachyne-map](https://github.com/tachyne/tachyne-map) | 3D web map: meshes the world in Go and streams it to the browser |
