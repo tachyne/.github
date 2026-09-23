@@ -25,8 +25,8 @@ survival by default, real-Cape-Town earth mode as a variant.
                │                      │
           gw-java-776             gw-bedrock          ← render per version
                └──────────┬───────────┘
-                    │  typed domain events (attach protocol)
-              tachyne-world                                  ← ONE versionless engine
+                          │  typed domain events (attach protocol)
+                    tachyne-world                            ← ONE versionless engine
 ```
 
 A new Minecraft version is a new translation step in a gateway — the engine
